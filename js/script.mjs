@@ -1,3 +1,5 @@
+// Imports
+import { languages } from "./languages.mjs";
 window.addEventListener("DOMContentLoaded", () => {
   // Page elements
   const flags = Array.from(document.querySelectorAll(".flag"));
@@ -13,7 +15,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // JS variables
   let currentLang = localStorage.getItem("lang") ?? "kz";
-  let languagesObj = undefined;
+  let languagesObj = languages;
 
   // Functions
   const changeFlag = (lang) => {
@@ -37,18 +39,6 @@ window.addEventListener("DOMContentLoaded", () => {
         val.innerHTML = languagesObj[key][currentLang];
       });
     }
-  };
-
-  const getLanguages = async () => {
-    fetch("../json/language.json")
-      .then((resp) => resp.json())
-      .then((obj) => {
-        languagesObj = obj;
-        changeLang(currentLang);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   const flagSwitch = (flag) => {
@@ -88,7 +78,7 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   // Function call
-  getLanguages();
+  changeLang(currentLang);
   video.play();
   obsElems(featuresCards);
   obsElems(steps);
