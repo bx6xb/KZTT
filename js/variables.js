@@ -1,4 +1,5 @@
-export const languages = {
+let currentLang = localStorage.getItem("lang") ?? "kz";
+let languagesObj = {
   "lng-title": {
     ru: "KZTT | Главная",
     kz: "KZTT | Негізгі",
