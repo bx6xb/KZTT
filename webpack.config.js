@@ -45,7 +45,7 @@ module.exports = (env, argv) => {
           test: /\.woff2$/,
           type: "asset/resource",
           generator: {
-            filename: "fonts/[name][ext]",
+            filename: "fonts/[contenthash][ext]",
           },
         },
       ],
@@ -55,7 +55,7 @@ module.exports = (env, argv) => {
         filename: "index.html",
         template: "./src/index.html",
         inject: "body",
-        favicon: "./src/logo.png",
+        favicon: "./src/logo.webp",
       }),
       isDev
         ? ""
